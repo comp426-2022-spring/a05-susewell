@@ -1,5 +1,5 @@
 // Place your server entry point code here
-const args = require('minimist')(proccess.argv.slice(2))
+const args = require('minimist')(process.argv.slice(2))
 
 const help = (`
 server.js [options]

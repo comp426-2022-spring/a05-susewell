@@ -145,3 +145,19 @@ app.get('/app/flip/call/tails', (req, res) => {
     let tails = flipACoin('tails')
     res.status(200).json(tails)
 })
+
+if (args.debug || args.d) {
+    app.get('/app/log/access/', (req, res, next) => {
+        const stmt = db.prepare('SELECT * FROM access').all();
+        res.status(200).json(stmt);
+    })
+    app.get ('/app/error/', (req, res, next) => {
+        throw new Error('Error')
+    })
+}
+
+app.use(function(req, res){
+    const statusCode = 404
+    const statusMessage = 'NOT FOUND'
+    res.status(statusCode).end(statusCode+ ' ' +statusMessage)
+});

@@ -115,3 +115,33 @@ function countFlips(array) {
 app.use(express.static('./public'))
 
 
+app.get('/app/flip/', (req, res) => {
+    res.status(200).json({ 'flip' : coinFlip()})
+})
+
+
+
+app.get('/app/echo/:number', express.json(), (req, res) => {
+    res.status(200).json({ 'message': req.params.number })
+})
+
+app.get('/app/echo/', (req, res) => {
+    res.status(200).json({ 'message' : req.query.number })
+})
+
+
+app.get('/app/flips/:number', (req, res) => {
+    let flips = coinFlips(req.params.number)
+    let final = countFlips(flips)
+    res.status(200).json({ 'raw' : flips, 'summary' : final})
+})
+
+app.get('/app/flip/call/heads', (req, res) => {
+    let heads = flipACoin('heads')
+    res.status(200).json(heads)
+})
+
+app.get('/app/flip/call/tails', (req, res) => {
+    let tails = flipACoin('tails')
+    res.status(200).json(tails)
+})

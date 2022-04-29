@@ -61,3 +61,53 @@ app.use((req, res, next) => {
     const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status, logdata.referrer, logdata.useragent)
     next();
 })
+
+function coinFlip() {
+    let flip =  Math.random();
+    if (flip < 0.5){
+        return 'heads'
+    } else {
+        return 'tails'
+    }
+}
+function coinFlips(flips) {
+
+    let result = [];
+    for(let i = 0; i < flips; i++) {
+      result [i] = coinFlip();
+    }
+    return result;
+}
+
+function countFlips(array) {
+
+     let i = 0;
+     let heads = 0
+     let tails = 0
+    
+    while (i < array.length) {
+      if (array[i] === 'heads') {
+        heads += 1;
+      }else {
+        tails +=1
+      }
+      i++;
+    }
+    if (tails === 0) {
+      return {'heads' : heads}
+    } else if (heads === 0) {
+      return {'tails' : tails}
+    } else {
+    return {'heads' : heads, 'tails' : tails}
+    }
+  }
+
+  function flipACoin(call) {
+    let flip =  coinFlip();
+  
+    if (call != flip){
+     return {call: call, flip: flip, result: 'lose'}
+    } else{
+      return {call: call, flip: flip, result: 'win'}
+    }
+  }

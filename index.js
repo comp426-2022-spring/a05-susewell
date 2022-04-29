@@ -40,4 +40,6 @@ if (args.log == 'false') {
     }
 
     const accesslog = fs.createWriteStream( logdir+'access.log', { flags: 'a' })
+
+    app.use(morgan('combined', { stream: accesslog }))
 }

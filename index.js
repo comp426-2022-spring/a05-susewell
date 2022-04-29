@@ -18,3 +18,6 @@ if (args.help || args.h) {
     console.log(help)
     process.exit(0)
 }
+
+var express = require('express')
+var app = express()

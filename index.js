@@ -27,3 +27,6 @@ const morgan = require('morgan')
 const logdb = require('./database.js')
 
 app.use(express.json());
+
+const port = args.port || args.p || process.env.PORT || 5000
+

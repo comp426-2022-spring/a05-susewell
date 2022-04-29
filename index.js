@@ -111,3 +111,7 @@ function countFlips(array) {
       return {call: call, flip: flip, result: 'win'}
     }
   }
+
+app.use(express.static('./public'))
+
+

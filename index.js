@@ -24,4 +24,4 @@ var app = express()
 
 const fs = require('fs')
 const morgan = require('morgan')
-const 
+const logdb = require('./database.js')

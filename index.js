@@ -38,4 +38,6 @@ if (args.log == 'false') {
     if (!fs.existsSync(logdir)) {
         fs.mkdirSync(logdir);
     }
+
+    const accesslog = fs.createWriteStream( logdir+'access.log', { flags: 'a' })
 }

@@ -13,3 +13,8 @@ server.js [options]
             Logs are always written to database.
 --help, -h	Return this message and exit.
 `)
+
+if (args.help || args.h) {
+    console.log(help)
+    process.exit(0)
+}

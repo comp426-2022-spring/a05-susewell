@@ -30,3 +30,12 @@ app.use(express.json());
 
 const port = args.port || args.p || process.env.PORT || 5000
 
+if (args.log == 'false') {
+    console.log("NOTICE: not creating file access.log")
+} else {
+    const logdir = './log/';
+
+    if (!fs.existsSync(logdir)) {
+        fs.mkdirSync(logdir);
+    }
+}
